@@ -24,26 +24,18 @@ jobs:
         git fetch origin ${{ github.base_ref }}
     
         echo "Listing changed files from origin/${{ github.base_ref }}"
-        git diff --name-only origin/${{ github.base_ref }}
-    
-        echo "Storing changed files in a variable"
         CHANGED_FILES_LIST=$(git diff --name-only origin/${{ github.base_ref }})
         
         echo "List of changed files:"
         echo "$CHANGED_FILES_LIST"
     
         echo "Filtering changed files for specific directories"
-        CHANGED_FILES=$(echo "$CHANGED_FILES_LIST" | grep -E '^build/group_name|^src/group_name')
-        
-        echo "Filtered file list:"
-        echo "$CHANGED_FILES"
-        
-        if [ -z "$CHANGED_FILES" ]; then
+        if echo "$CHANGED_FILES_LIST" | grep -E '^build/group_name|^src/group_name'; then
+          echo "Changes detected in specified directories."
+          exit 1
+        else
           echo "No changes in specified directories."
           exit 0
-        else
-          echo "Changes detected in specified directories:"
-          echo "$CHANGED_FILES"
-          exit 1
         fi
+
   
