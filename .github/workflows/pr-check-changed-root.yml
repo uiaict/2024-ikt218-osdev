@@ -21,9 +21,12 @@ jobs:
     - name: Check group_name folder modifications
       run: |
         git fetch origin ${{ github.base_ref }}
-        echo "OK"
+        echo "Fetched origin/${{ github.base_ref }}"
+        git diff --name-only origin/${{ github.base_ref }}
+        echo "Diff command executed"
         CHANGED_FILES=$(git diff --name-only origin/${{ github.base_ref }} | grep -E '^build/group_name|^src/group_name')
-        echo "Running"
+        echo "Changed files detected:"
+        echo "$CHANGED_FILES"
         if [ ! -z "$CHANGED_FILES" ]; then
           echo "Pull Request contains changes in 'build/group_name' or 'src/group_name' directories by a non-authorized user."
           echo "Changed files:"
