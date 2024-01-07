@@ -24,7 +24,7 @@ jobs:
         echo "Fetched origin/${{ github.base_ref }}"
         git diff --name-only origin/${{ github.base_ref }}
         echo "Diff command executed"
-        CHANGED_FILES=$(git diff --name-only origin/master | grep -E '^build/group_name|^src/group_name')
+        CHANGED_FILES=$(git diff --name-only origin/master)
         echo "Changed files detected:"
         echo "$CHANGED_FILES"
         if [ ! -z "$CHANGED_FILES" ]; then
