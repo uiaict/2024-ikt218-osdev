@@ -9,32 +9,19 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v2
 
-    - name: Check if PR is from perara12
-      id: check_user
-      run: |
-        if [ "${{ github.actor }}" = "perara12" ]; then
-          echo "PR is from perara12, skipping file check."
-          echo "skip_check=true" >> $GITHUB_ENV
-        else
-          echo "skip_check=false" >> $GITHUB_ENV
-        fi
     - name: Check modified files
-      if: env.skip_check == 'false'
       run: |
         git fetch origin ${{ github.base_ref }}
         git diff --name-only origin/${{ github.base_ref }} | grep -E '^(build/|src/)' > /dev/null
-
         if [ $? -ne 0 ]; then
           echo "Pull Request contains changes outside 'build/' and 'src/' directories."
           exit 1
         fi
 
     - name: Check group_name folder modifications
-      if: env.skip_check == 'false'
       run: |
         git fetch origin ${{ github.base_ref }}
         CHANGED_FILES=$(git diff --name-only origin/${{ github.base_ref }} | grep -E '^build/group_name|^src/group_name')
-
         if [ ! -z "$CHANGED_FILES" ]; then
           echo "Pull Request contains changes in 'build/group_name' or 'src/group_name' directories by a non-authorized user."
           echo "Changed files:"
