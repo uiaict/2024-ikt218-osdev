@@ -3,7 +3,7 @@
 # Languages: C, C++, and NASM Assembly
 # Tip: Use Ctrl+Shift+P in Visual Studio Code to get started with CMake.
 ########################################
-
+t
 # Skip compiler self-tests (saves time, avoids errors with some cross compilers)
 set(CMAKE_C_COMPILER_WORKS 1)
 set(CMAKE_CXX_COMPILER_WORKS 1)
