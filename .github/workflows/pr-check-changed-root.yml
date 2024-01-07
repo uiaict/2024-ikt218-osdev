@@ -11,12 +11,22 @@ jobs:
 
     - name: Check modified files
       run: |
+        echo "Fetching origin/${{ github.base_ref }}"
         git fetch origin ${{ github.base_ref }}
-        git diff --name-only origin/${{ github.base_ref }} | grep -E '^(build/|src/)' > /dev/null
-        if [ $? -ne 0 ]; then
-          echo "Pull Request contains changes outside 'build/' and 'src/' directories."
+    
+        echo "Checking for changes outside 'build/' and 'src/' directories"
+        OUTSIDE_CHANGE=$(git diff --name-only origin/${{ github.base_ref }} | grep -vE '^(build/|src/)')
+    
+        if [ ! -z "$OUTSIDE_CHANGE" ]; then
+          echo "Error: Pull Request contains changes outside 'build/' and 'src/' directories."
+          echo "The following files/directories are outside the allowed paths:"
+          echo "$OUTSIDE_CHANGE"
           exit 1
+        else
+          echo "No changes outside 'build/' and 'src/' directories. Proceeding with the workflow."
+          exit 0
         fi
+
     
     - name: Check group_name folder modifications
       run: |
