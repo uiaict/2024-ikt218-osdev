@@ -30,9 +30,3 @@ jobs:
           echo "$CHANGED_FILES"
           exit 1
         fi
-        if [ ! -z "$CHANGED_FILES" ]; then
-          echo "Pull Request contains changes in 'build/group_name' or 'src/group_name' directories by a non-authorized user."
-          echo "Changed files:"
-          echo "$CHANGED_FILES"
-          exit 1
-        fi
