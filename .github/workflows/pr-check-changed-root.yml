@@ -17,7 +17,7 @@ jobs:
           echo "Pull Request contains changes outside 'build/' and 'src/' directories."
           exit 1
         fi
-
+    
     - name: Check group_name folder modifications
       run: |
         echo "Fetching origin/${{ github.base_ref }}"
@@ -31,11 +31,37 @@ jobs:
     
         echo "Filtering changed files for specific directories"
         if echo "$CHANGED_FILES_LIST" | grep -E '^build/group_name|^src/group_name'; then
-          echo "Changes detected in specified directories."
+          echo "Error: Changes detected in restricted directories ('build/group_name' or 'src/group_name')."
+          echo "Please ensure that your pull request does not modify files in these directories."
+          echo "The following files triggered this error:"
+          echo "$CHANGED_FILES_LIST" | grep -E '^build/group_name|^src/group_name'
           exit 1
         else
-          echo "No changes in specified directories."
+          echo "No changes in restricted directories detected. Proceeding with the workflow."
+          exit 0
+        fi
+        
+    - name: Check for newly created files in src/ and build/
+      run: |
+        echo "Checking for newly created files in 'src/' and 'build/' directories"
+    
+        # Fetch the base branch
+        git fetch origin ${{ github.base_ref }}
+    
+        # List only newly created files, excluding directories
+        NEW_FILES=$(git diff --name-only --diff-filter=A origin/${{ github.base_ref }} | grep -E '^(build/|src/)[^/]+$')
+    
+        echo "List of new files:"
+        echo "$NEW_FILES"
+    
+        if [ ! -z "$NEW_FILES" ]; then
+          echo "Error: New files have been created in 'src/' or 'build/' directories."
+          echo "Creating new files in these directories is not allowed in this workflow."
+          echo "The following files triggered this error:"
+          echo "$NEW_FILES"
+          exit 1
+        else
+          echo "No new files in 'src/' or 'build/' directories. Proceeding with the workflow."
           exit 0
         fi
 
-  
