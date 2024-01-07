@@ -1,0 +1,7 @@
+[
+{
+  "directory": "/workspaces/2023-ikt218-osdev/build/group_name",
+  "command": "/usr/local/bin/i686-elf-gcc -I/workspaces/2023-ikt218-osdev/src/group_name/include -g -Wall -Wextra -ffreestanding -fno-stack-protector -fno-stack-check -fno-lto -fPIE -m32 -march=i386 -mno-mmx -mno-sse -mno-sse2 -mno-red-zone -std=gnu99 -o CMakeFiles/uiaos-kernel.dir/src/kernel.c.o -c /workspaces/2023-ikt218-osdev/src/group_name/src/kernel.c",
+  "file": "/workspaces/2023-ikt218-osdev/src/group_name/src/kernel.c"
+}
+]

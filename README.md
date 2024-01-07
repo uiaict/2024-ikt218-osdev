@@ -1,27 +1,50 @@
-# IKT218 - Operating System Developer Repository
+# IKT218 - Operating System Development Course Repository
 
-## Description
-This repository holds the code needed for students to partake in the lab assignments in IKT218 at the University of Agder, Norway. At the end of the semester, each student will make a pull request to this repository, which should end up with a collection of operating systems, later to be hosted at [https://uiaict.github.io/ikt218-osdev/](https://uiaict.github.io/ikt218-osdev/)
+Welcome to the University of Agder's IKT218 course repository. This platform is crucial for students involved in our Operating System Development lab assignments. At the semester's end, students will add their operating system projects to this repository, creating a diverse showcase of their work.
 
-This repository, along with the `group_name`directory is a starter pack for getting started with OSDevelopment. It provides a basic directory structure, a i386 linker script, and GRUB2 configuration.
+## Repository Contents
+This package is designed to support OS development and includes:
+- Standard directory structure for source and build files
+- i386 linker script
+- Configuration for the Limine bootloader using Multiboot2
 
-## Starting your lab assignment
-1. Rename `group_name` to an **approriate** name.
-2. Go into `.vscode/settings.json` and set the same group name as in step 1 
-```json
-    "cmake.buildDirectory": "${workspaceFolder}/build_group_name", <-- Change
-    "cmake.sourceDirectory": "${workspaceFolder}/group_name", <-- Change
+## Getting Started
+Follow these steps for your lab assignment:
+
+1. **Rename the Directory**: Change `group_name` to a name that reflects your project or group. Apply this change to both the source and build directories.
+
+2. **Update VS Code Settings**:
+   Edit `.vscode/settings.json` to match your new group name:
+   ```json
+   "cmake.buildDirectory": "${workspaceFolder}/build/<your_group_name>",
+   "cmake.sourceDirectory": "${workspaceFolder}/src/<your_group_name>",
+   ```
+   **Note**: Do not push changes to anything but the `build/<your_group_name>` or `src/<your_group_name>` directories to avoid conflicts.
+
+3. **Set Up Your Development Environment**:
+   Prepare your environment as instructed in the lectures (Devcontainer). These are tested on Windows, Linux, and MacOS (arm64). Customized setups are allowed, but receive limited support.
+
+4. **Maintain Professional Coding Standards**:
+   Use appropriate variable names and comments. Unprofessional practices will negatively affect your grade.
+
+## Project Submission
+Your submission should include:
+- A working operating system
+- The source code
+- A final report in PDF format
+
+Arrange your project like this:
 ```
-Note: **DO NOT** push any changes to `.vscode` or `web`. Else we will have a hassle with pull request at the end...
-
-3. Set up your development environment according to guides supplied in lecture. If you choose to run customized environment setups, that is completely fine, but you will get no support :D
-4. **DO NOT** shit around with inapproriate variable names or comments. As it is expected that the candidates hold the capability of basic understanding of social norms, failing to present code that adhere to these will set your grade back substantially. Please, just be civil :D
-
-## At delivery
-1. You should have a fully functional operating system, including source code, and a final report in `pdf` format. The structure of your final project repository should be:
+.vscode/
+.devcontainer/
+.github/
+.gitignore
+build/<your_group_name>/
+src/<your_group_name>/
 ```
-.vscode
-build_group_name
-group_name
-web
-```
+
+## Showcase
+Your projects will be displayed at the end of the semester on [UIA ICT OS Dev Showcase](https://uiaict.github.io/2024-ikt218-osdev/).
+
+## Additional Information
+Refer to your lecture materials and use the course forum for any questions.
