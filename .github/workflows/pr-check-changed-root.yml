@@ -17,7 +17,7 @@ jobs:
           echo "skip_check=true" >> $GITHUB_ENV
         else
           echo "skip_check=false" >> $GITHUB_ENV
-
+        fi
     - name: Check modified files
       if: env.skip_check == 'false'
       run: |
