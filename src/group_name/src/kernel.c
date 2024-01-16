@@ -1,6 +1,6 @@
-#include <stdint.h>
-#include <stddef.h>
-#include <stdbool.h>
+#include "libc/stdint.h"
+#include "libc/stddef.h"
+#include "libc/stdbool.h"
 #include <multiboot2.h>
 
 

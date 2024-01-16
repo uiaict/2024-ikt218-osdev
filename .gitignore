@@ -14,3 +14,4 @@ build.ninja
 .ninja*
 
 00_per_arne
+src/group_name/src/kernel.c

@@ -4,7 +4,7 @@ DISK_PATH=$2
 
 # Start QEMU in the background
 echo "Starting QEMU"
-qemu-system-i386 -S -gdb tcp::1234 -boot d -hda $KERNEL_PATH -hdb $DISK_PATH -m 64 -audiodev sdl,id=sdl1,out.buffer-length=40000 -machine pcspk-audiodev=sdl1 -serial /dev/pts/2 &
+qemu-system-i386 -S -gdb tcp::1234 -boot d -hda $KERNEL_PATH -hdb $DISK_PATH -m 64 -audiodev sdl,id=sdl1,out.buffer-length=40000 -machine pcspk-audiodev=sdl1 -serial pty &
 QEMU_PID=$!
 
 # Function to check if gdb is running
