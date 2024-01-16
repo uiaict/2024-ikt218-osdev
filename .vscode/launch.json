@@ -1,0 +1,39 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Qemu Debug",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "${config:cmake.buildDirectory}/kernel.bin",
+            "cwd": "${config:cmake.buildDirectory}",
+            "args": [],
+            "targetArchitecture": "x86", // Change to x64 for 64-bit architecture
+            "MIMode": "gdb",
+            "miDebuggerPath": "/usr/bin/gdb-multiarch",
+            "miDebuggerArgs": "",
+            "customLaunchSetupCommands": [
+                {
+                    "text": "target remote localhost:1234",
+                    "description": "Connect to QEMU remote debugger"
+                },
+                {
+                    "text": "symbol-file ${config:cmake.buildDirectory}/kernel.bin",
+                    "description": "Get kernel symbols"
+                }
+            ],
+            "setupCommands": [
+                {
+                    "description": "Enable pretty-printing for gdb",
+                    "text": "-enable-pretty-printing",
+                    "ignoreFailures": true
+                },
+                {
+                    "text": "file ${config:cmake.buildDirectory}/kernel.bin",
+                    "description": "Load binary."
+                },
+            ],
+            "preLaunchTask": "Launch QEMU"
+        }
+    ]
+}

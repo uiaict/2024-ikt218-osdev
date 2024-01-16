@@ -1,0 +1,46 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "CMake Build",
+      "type": "shell",
+      "command": "cmake --build ${config:cmake.buildDirectory} --target uiaos-create-image",
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
+      "presentation": {
+        "reveal": "always",
+        "panel": "shared"
+      },
+      "options": {
+        "cwd": "${config:cmake.sourceDirectory}"
+      }
+    },
+    {
+      "label": "Launch QEMU",
+      "type": "shell",
+      "isBackground": true,
+      "presentation": {
+        "reveal": "always",
+        "panel": "new"
+      },
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "command": "/bin/bash ${config:cmake.sourceDirectory}/scripts/start_qemu.sh ${config:cmake.buildDirectory}/kernel.iso ${config:cmake.buildDirectory}/disk.iso",
+      "problemMatcher": {
+        "pattern": {
+          "regexp": "^(Starting QEMU)",
+          "line": 1,
+        },
+        "background": {
+            "activeOnStart": true,
+            "beginsPattern": "^(Starting QEMU)",
+            "endsPattern": "^(Starting QEMU)"
+        }
+      },
+      "dependsOn": ["CMake Build"]
+    }
+  ]
+} 

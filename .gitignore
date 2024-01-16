@@ -1,0 +1,16 @@
+.vscode
+src/build_*/*
+venv
+!build_*/kernel.bin
+!build_*/kernel.img
+*.lock
+*.egg-info*
+.cmake
+CMakeCache*
+CMakeFiles
+iso
+.env
+build.ninja
+.ninja*
+
+00_per_arne

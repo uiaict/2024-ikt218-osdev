@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>IKT218 - Operating Systems</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://getbootstrap.com/docs/4.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles -->
+    <style>
+        body {
+            margin-top: 60px;
+        }
+        canvas {
+            display: none;
+        }
+        .console {
+            white-space: pre; 
+            font: 11px monospace; 
+            line-height: 12px;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+        <a class="navbar-brand" href="#">IKT218 - Operating Systems</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+    </nav>
+
+    <main role="main" class="container">
+        <div id="starter" class="starter-template"></div>
+    </main>
+
+    <!-- Scripts -->
+    <script src="libv86.js"></script>
+    <script>
+        "use strict";
+
+        window.onload = function() {
+            let memory = 32; // MB
+            let video_memory = 2; // MB
+            let operating_systems = {{ os_list | safe }};
+
+            operating_systems.forEach((item) => {
+                let top_container = document.createElement("div");
+                let top_title = document.createElement("h3");
+                top_title.innerHTML = "Virtual Machine: " + item.name;
+
+                let container = document.createElement("div");
+                container.id = "vm-" + item.name;
+
+                let canvas = document.createElement("canvas");
+                container.appendChild(canvas);
+
+                let div = document.createElement("div");
+                div.className = "console";
+                container.appendChild(div);
+
+                document.getElementById("starter").appendChild(top_container);
+                top_container.appendChild(top_title);
+                top_container.appendChild(container);
+
+                new V86Starter({
+                    wasm_path: "v86.wasm",
+                    memory_size: memory * 1024 * 1024,
+                    vga_memory_size: video_memory * 1024 * 1024,
+                    screen_container: container,
+                    bios: { url: "bios/seabios.bin" },
+                    vga_bios: { url: "bios/vgabios.bin" },
+                    hda: { url: "os/" + item.kernel },
+                    hdb: { url: "os/" + item.disk }, 
+                    autostart: true,
+                });
+            });
+        }
+    </script>
+
+    <!-- Bootstrap and jQuery -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://getbootstrap.com/docs/4.0/assets/js/vendor/popper.min.js"></script>
+    <script src="https://getbootstrap.com/docs/4.0/dist/js/bootstrap.min.js"></script>
+</body>
+</html>
