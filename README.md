@@ -10,6 +10,7 @@ This package is designed to support OS development and includes:
 
 ## Getting Started
 Follow these steps for to setup your environment for the lab assignment:
+The first thing you need to do is to g into `devcontainer.json` and uncomment the section that belongs to your machine. We have tested Arch Linux on X11, Windows 11 with WSL2, and MacOS M1 (Arm).
 
 ### MacOS Installation Steps
 
@@ -27,6 +28,25 @@ Follow these steps for to setup your environment for the lab assignment:
      ```bash
      brew install --cask docker
      ```
+
+4. ** Install Pulseaudio:**
+   - install pulseaudio by executing this command in the terminal:
+   ```
+   brew install pulseaudio
+   ```
+   - after installation you should run
+   ```
+   brew services start pulseaudio
+   pactl load-module module-native-protocol-tcp auth-anonymous=1
+   lsof -i -P | grep -i "listen"
+   ```
+   - ensure that the output of lsof contains a line binding to port 4713 like so `TCP *:4713 (LISTEN)`
+
+5. ** Install XQuartz: **
+   - XQuartz is in charge of forwarding display from Mac to Docker container
+   ```
+   brew install --cask xquartz
+   ```
 
 ### Windows Installation Steps
 
