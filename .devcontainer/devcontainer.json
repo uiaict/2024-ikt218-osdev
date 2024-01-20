@@ -30,28 +30,26 @@
     //"mounts": [
         //"source=/tmp/.X11-unix,target=/tmp/.X11-unix,type=bind,consistency=cached",
     //],
-	//"containerEnv": {
-	//},
+	//"containerEnv": {},
 
 
 	////////////////////////////////////
 	// Windows Setup (WSL2)
 	////////////////////////////////////
     //"mounts": [
-		// Comment out on linux
-		//"source=/mnt/wslg,target=/mnt/wslg,type=bind,consistency=cached"
+	//	"source=/mnt/wslg,target=/mnt/wslg,type=bind,consistency=cached"
     //],
 	//"containerEnv": {
-		// Comment out on linux
-		//"PULSE_SERVER": "/mnt/wslg/PulseServer"
+	//	"PULSE_SERVER": "/mnt/wslg/PulseServer"
 	//},
+
 
 	////////////////////////////////////
 	// MacOS Setup (X11)
 	// You need to install XQuartz and pulseaudio
 	////////////////////////////////////
 	//"containerEnv": {
-    //    "DISPLAY": "docker.for.mac.host.internal:0",
+    //  "DISPLAY": "docker.for.mac.host.internal:0",
 	//	"PULSE_SERVER": "docker.for.mac.host.internal:4713"
     //},
 	//"mounts": [
