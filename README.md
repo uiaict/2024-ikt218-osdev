@@ -3,7 +3,7 @@
 Welcome to the University of Agder's IKT218 course repository. This platform is crucial for students involved in our Operating System Development lab assignments. At the semester's end, students will add their operating system projects to this repository, creating a diverse showcase of their work.
 
 **Are your project out of sync with this repository?:**
-You will see something like this in your fork: `This branch is xxx commits behind uiaict/2024-ikt218-osdev:master.`. If this is the case you can click this message and perform a pull-request from `uiaict/2024-ikt218-osdev:master` to your repository to get the latest changes. You should never have a merge conflict, if you do, you have not followed the structure described below.
+You will see something like this in your fork:` This branch is xxx commits behind uiaict/2024-ikt218-osdev:master.`. If this is the case you can click this message and perform a pull-request from `uiaict/2024-ikt218-osdev:master` to your repository to get the latest changes. You should never have a merge conflict, if you do, you have not followed the structure described below.
 
 ## Repository Contents
 This package is designed to support OS development and includes:
