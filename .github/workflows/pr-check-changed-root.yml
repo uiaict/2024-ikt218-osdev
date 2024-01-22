@@ -60,7 +60,7 @@ jobs:
         git fetch origin ${{ github.base_ref }}
     
         # List only newly created files, excluding directories
-        NEW_FILES=$(git diff --name-only --diff-filter=A origin/${{ github.base_ref }} | grep -E '^(build/|src/)[^/]+$')
+        NEW_FILES=$(git diff --name-only --diff-filter=A origin/${{ github.base_ref }} | grep -E '^(build/|src/)[^/]+$' | tr -d '[:space:]') 
     
         echo "List of new files:"
         echo "$NEW_FILES"
