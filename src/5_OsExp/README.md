@@ -4,6 +4,16 @@ CTRL+SHIFT+P henceforth know as _menu_
 
 Once environment is set up just open VSCode and the container will automatically be rebuilt. After rebuild do "CMake configure..." again in the menu, and then choose the correct compiler (3.2.0). Whenever you make changes you can just go into the menu and "CMake build" or something to that effect.
 
+### Conflicts
+
+If you have synced remotely on GitHub or made changes locally and you want to git pull/push you might have to 
+```
+git pull --rebase origin master
+```
+
+Afterwards make sure everything works allright.
+
+
 # Setting up environment & other stuff
 
 #### (1) Make sure WSL2 is installed
