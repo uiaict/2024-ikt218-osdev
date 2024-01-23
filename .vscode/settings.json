@@ -1,6 +1,6 @@
 {
-    "cmake.buildDirectory": "${workspaceFolder}/build/group_name",
-    "cmake.sourceDirectory": "${workspaceFolder}/src/group_name",
+    "cmake.buildDirectory": "${/home/synnero/ikt218g24v}/build/13_OSExperts",
+    "cmake.sourceDirectory": "${/home/synnero/ikt218g24v}/src/13_OSExperts",
     "C_Cpp.errorSquiggles": "disabled",
     "files.associations": {
         "cstddef": "cpp",
