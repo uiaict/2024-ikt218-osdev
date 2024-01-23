@@ -32,7 +32,9 @@
     </nav>
 
     <main role="main" class="container">
-        <div id="starter" class="starter-template"></div>
+        <div id="starter" class="starter-template">
+            <button id="startButton" class="btn btn-primary">Start</button>
+        </div>
     </main>
 
     <!-- Scripts -->
@@ -40,7 +42,7 @@
     <script>
         "use strict";
 
-        window.onload = function() {
+        document.getElementById('startButton').addEventListener('click', function() {
             let memory = 32; // MB
             let video_memory = 2; // MB
             let operating_systems = {{ os_list | safe }};
@@ -76,7 +78,9 @@
                     autostart: true,
                 });
             });
-        }
+
+            this.disabled = true;
+    });
     </script>
 
     <!-- Bootstrap and jQuery -->
