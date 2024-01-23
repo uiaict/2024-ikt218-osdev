@@ -13,5 +13,8 @@ iso
 build.ninja
 .ninja*
 
+01_jp
+.vscode/settings.json
+
 00_per_arne
 src/group_name/src/kernel.c
