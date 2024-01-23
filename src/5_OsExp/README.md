@@ -13,6 +13,8 @@ git pull --rebase origin master
 
 Afterwards make sure everything works allright.
 
+_In order to save everyone's sanity, do the remote sync rarely, not often._
+
 
 # Setting up environment & other stuff
 
