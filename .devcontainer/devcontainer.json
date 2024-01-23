@@ -25,29 +25,38 @@
 
 
 	////////////////////////////////////
-	// Uncomment on linux and macOS
+	// Linux Setup (X11)
 	////////////////////////////////////
-    "mounts": [
-        "source=/tmp/.X11-unix,target=/tmp/.X11-unix,type=bind,consistency=cached",
+    //"mounts": [
+        //"source=/tmp/.X11-unix,target=/tmp/.X11-unix,type=bind,consistency=cached",
+    //],
+	//"containerEnv": {},
 
-		// Comment out on linux
-		"source=/mnt/wslg,target=/mnt/wslg,type=bind,consistency=cached"
-    ],
-	
-	////////////////////////////////////
-	// UNCOMMENT ON LINUX AND WINDOWS (wsl2)
-	////////////////////////////////////
-	"containerEnv": {
-		// Comment out on linux
-		"PULSE_SERVER": "/mnt/wslg/PulseServer"
-	},
 
 	////////////////////////////////////
-	// UNCOMMENT ON MAC
+	// Windows Setup (WSL2)
+	////////////////////////////////////
+    //"mounts": [
+	//	"source=/mnt/wslg,target=/mnt/wslg,type=bind,consistency=cached"
+    //],
+	//"containerEnv": {
+	//	"PULSE_SERVER": "/mnt/wslg/PulseServer"
+	//},
+
+
+	////////////////////////////////////
+	// MacOS Setup (X11)
+	// You need to install XQuartz and pulseaudio
 	////////////////////////////////////
 	//"containerEnv": {
-    //    "DISPLAY": "docker.for.mac.host.internal:0"
+    //  "DISPLAY": "docker.for.mac.host.internal:0",
+	//	"PULSE_SERVER": "docker.for.mac.host.internal:4713"
     //},
+	//"mounts": [
+	//	"source=/tmp/.X11-unix,target=/tmp/.X11-unix,type=bind,consistency=cached",
+	//	"source=${localEnv:HOME}/.config/pulse,target=/home/osdev/.config/pulse,type=bind,consistency=cached"
+    //],
+	
 
 	"customizations": {
 		"vscode": {

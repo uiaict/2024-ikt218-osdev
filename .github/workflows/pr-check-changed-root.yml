@@ -15,7 +15,8 @@ jobs:
         git fetch origin ${{ github.base_ref }}
     
         echo "Checking for changes outside 'build/' and 'src/' directories"
-        OUTSIDE_CHANGE=$(git diff --name-only origin/${{ github.base_ref }} | grep -vE '^(build/|src/)')
+        OUTSIDE_CHANGE=$(git diff --name-only origin/${{ github.base_ref }} | grep -vE '^(build/|src/)' | tr -d '[:space:]')
+
     
         if [ ! -z "$OUTSIDE_CHANGE" ]; then
           echo "Error: Pull Request contains changes outside 'build/' and 'src/' directories."
@@ -59,7 +60,7 @@ jobs:
         git fetch origin ${{ github.base_ref }}
     
         # List only newly created files, excluding directories
-        NEW_FILES=$(git diff --name-only --diff-filter=A origin/${{ github.base_ref }} | grep -E '^(build/|src/)[^/]+$')
+        NEW_FILES=$(git diff --name-only --diff-filter=A origin/${{ github.base_ref }} | grep -E '^(build/|src/)[^/]+$' | tr -d '[:space:]') 
     
         echo "List of new files:"
         echo "$NEW_FILES"
