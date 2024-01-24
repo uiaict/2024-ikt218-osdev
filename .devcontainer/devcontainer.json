@@ -48,14 +48,14 @@
 	// MacOS Setup (X11)
 	// You need to install XQuartz and pulseaudio
 	////////////////////////////////////
-	//"containerEnv": {
-    //  "DISPLAY": "docker.for.mac.host.internal:0",
-	//	"PULSE_SERVER": "docker.for.mac.host.internal:4713"
-    //},
-	//"mounts": [
-	//	"source=/tmp/.X11-unix,target=/tmp/.X11-unix,type=bind,consistency=cached",
-	//	"source=${localEnv:HOME}/.config/pulse,target=/home/osdev/.config/pulse,type=bind,consistency=cached"
-    //],
+	"containerEnv": {
+      "DISPLAY": "docker.for.mac.host.internal:0",
+		"PULSE_SERVER": "docker.for.mac.host.internal:4713"
+    },
+	"mounts": [
+		"source=/tmp/.X11-unix,target=/tmp/.X11-unix,type=bind,consistency=cached",
+		"source=${localEnv:HOME}/.config/pulse,target=/home/osdev/.config/pulse,type=bind,consistency=cached"
+    ],
 	
 
 	"customizations": {
