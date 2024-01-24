@@ -4,7 +4,6 @@
 #include <multiboot2.h>
 
 
-
 struct multiboot_info {
     uint32_t size;
     uint32_t reserved;
