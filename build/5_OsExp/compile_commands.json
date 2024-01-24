@@ -8,5 +8,10 @@
   "directory": "/workspaces/2024-ikt218-os-exp-5/build/5_OsExp",
   "command": "/usr/local/bin/i686-elf-g++ -I/workspaces/2024-ikt218-os-exp-5/src/5_OsExp/include -g -Wall -Wextra -nostdinc -nostdlib -fno-builtin -fno-stack-protector -fno-stack-check -fno-lto -fPIE -m32 -march=i386 -mno-mmx -mno-sse -mno-sse2 -mno-red-zone -g -Wno-unused-variable -Wno-unused-parameter -std=gnu++20 -o CMakeFiles/uiaos-kernel.dir/src/kernel.cpp.o -c /workspaces/2024-ikt218-os-exp-5/src/5_OsExp/src/kernel.cpp",
   "file": "/workspaces/2024-ikt218-os-exp-5/src/5_OsExp/src/kernel.cpp"
+},
+{
+  "directory": "/workspaces/2024-ikt218-os-exp-5/build/5_OsExp",
+  "command": "/usr/bin/nasm -I/workspaces/2024-ikt218-os-exp-5/src/5_OsExp/include -f elf32 -o CMakeFiles/uiaos-kernel.dir/src/gdt/gdt.asm.o /workspaces/2024-ikt218-os-exp-5/src/5_OsExp/src/gdt/gdt.asm",
+  "file": "/workspaces/2024-ikt218-os-exp-5/src/5_OsExp/src/gdt/gdt.asm"
 }
 ]

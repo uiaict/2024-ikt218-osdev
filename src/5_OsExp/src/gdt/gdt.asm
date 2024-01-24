@@ -52,8 +52,8 @@ gdt_descriptor:
     dd gdt_start ; Start address of GDT.
 
 ; GDT constants
-SEG_CODE = gdt_code - gdt_start
-SEG_DATA = gdt_data - gdt_start
+SEG_CODE equ gdt_code - gdt_start
+SEG_DATA equ gdt_data - gdt_start
 
 ; Instruction to load GDT
 lgdt [gdt_descriptor] ; Load GDT.
