@@ -64,6 +64,7 @@ add_executable(uiaos-kernel
 
 	# 5_OsExp
 	src/gdt/gdt.asm
+	src/sector0/sector0.asm
 )
 
 # Include directories for the kernel target
