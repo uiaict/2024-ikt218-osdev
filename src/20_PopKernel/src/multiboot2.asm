@@ -39,6 +39,8 @@ _start:
 
     call main ; Jump main function
 
+    hlt ; Halts the execution. This is needed to stop the main kernel function from running twice.
+
 section .bss
 stack_bottom:
     resb 4096 * 16

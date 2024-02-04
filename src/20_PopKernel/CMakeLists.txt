@@ -56,11 +56,16 @@ set(CMAKE_ASM_NASM_COMPILE_OBJECT
 ########################################
 set(OS_KERNEL_LINKER "${CMAKE_CURRENT_SOURCE_DIR}/src/arch/${OS_ARCH_TARGET}/linker.ld")
 
+# Get all .c files in the libc directory
+file(GLOB_RECURSE OS_LIBC_SOURCES "/workspaces/2024-ikt218-osdev/src/20_PopKernel/include/libc/*.c")
+
+# Get all .c, .ccp and .asm files in the src directory
+file(GLOB_RECURSE OS_KERNEL_SOURCES "src/*.c" "src/*.cpp" "src/*.asm")
+
 # Add executable target for the kernel
 add_executable(uiaos-kernel 
-	# src/multiboot2.asm # TODO: Add multiboot2 support
-    src/kernel.c
-	src/kernel.cpp
+	${OS_KERNEL_SOURCES}
+	${OS_LIBC_SOURCES}
 )
 
 # Include directories for the kernel target
