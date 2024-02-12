@@ -1,5 +1,5 @@
-#ifndef _IO_H
-#define _IO_H
+#ifndef IO_H
+#define IO_H
 
 #include "libc/stdint.h"
 
@@ -10,11 +10,13 @@
 #define DEFAULT_TEXT_COLOR 0x07
 #define DEFAULT_BACKGROUND_COLOR 0x00
 
+// Variables to store the current text/background color, cursor position and video memory
 extern uint8_t currentTextColor;
 extern uint8_t currentBackgroundColor;
 extern int cursorPos;
+extern char* videoMemory;
 
-void initVGA();
+// Function declarations
 void enableCursor(uint8_t cursorStart, uint8_t cursorEnd);
 void disableCursor();
 void setCursorPosition(uint16_t position);
@@ -26,8 +28,7 @@ void outb(unsigned short port, unsigned char val);
 uint8_t inb(uint16_t port);
 void scroll();
 
-extern char* videoMemory;
-
+// VGA color codes
 enum vgaColor {
     vgaColorBlack = 0,
     vgaColorBlue = 1,

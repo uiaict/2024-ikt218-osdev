@@ -60,7 +60,7 @@ set(OS_KERNEL_LINKER "${CMAKE_CURRENT_SOURCE_DIR}/src/arch/${OS_ARCH_TARGET}/lin
 file(GLOB_RECURSE OS_LIBC_SOURCES "/workspaces/2024-ikt218-osdev/src/20_PopKernel/include/libc/*.c")
 
 # Get all .c, .ccp and .asm files in the src directory
-file(GLOB_RECURSE OS_KERNEL_SOURCES "src/*.c" "src/*.cpp" "src/*.asm")
+file(GLOB_RECURSE OS_KERNEL_SOURCES "src/*.c" "src/*.cpp" "src/*.asm" "src/*s")
 
 # Add executable target for the kernel
 add_executable(uiaos-kernel 

@@ -1,4 +1,5 @@
 #include "io.h"
+#include "macros.h"
 
 // Video memory begins at address 0xb8000
 char* videoMemory = (char*) 0xb8000;
@@ -64,10 +65,12 @@ void scroll() {
 void clearScreen() {
     for (int i = 0; i < VGA_WIDTH * VGA_HEIGHT * 2; i += 2) { // For each character on the screen
         videoMemory[i] = ' '; // Set the character to a space
-        videoMemory[i + 1] = currentTextColor; // Set the color to light grey
+        videoMemory[i + 1] = currentTextColor; // Set the the current text color
+        videoMemory[i + 1] |= currentBackgroundColor << 4; // Set the background color
     }
 
     cursorPos = 0; // Set the cursor position to the beginning of the screen
+    setCursorPosition(cursorPos); // Set the cursor position
 }
 
 // Changes the text color

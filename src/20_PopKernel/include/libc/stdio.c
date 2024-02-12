@@ -29,6 +29,12 @@ int putchar(int ic) { // ic is the ascii code of the character to be printed
             break;
 
         case '\b': // Backspace character
+        
+            // Checks if the cursor is at the beginning of the screen
+            if (cursorPos == 0) {
+                break;
+            }
+
             cursorPos -= 2; // Move back 2 characters
             break;
 
@@ -39,13 +45,15 @@ int putchar(int ic) { // ic is the ascii code of the character to be printed
             cursorPos += 2;  // Move to the next character. Incremented by 2 because each character is 2 bytes long
     }
 
-    setCursorPosition(cursorPos/2); // Set the cursorcursorPosition
+    
 
     // Scroll the screen if the cursor is at the end of the screen
     if (cursorPos >= 160 * 25) { 
         scroll(); 
         cursorPos -= 160; 
     }
+    
+    setCursorPosition(cursorPos/2); // Set the cursorcursorPosition
 
     return ic;
 }
@@ -179,9 +187,16 @@ int printf(const char* __restrict__ format, ...) {
     
     }
 
-
-
     // End the list of arguments and return the number of characters printed
     va_end(parameters);
     return written;
+}
+
+// Implementation of getchar
+char getchar() {
+    char c = 0;
+    while (c == 0) {
+        c = inb(0x60);
+    }
+    return c;
 }
