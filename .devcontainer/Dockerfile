@@ -145,6 +145,7 @@ RUN groupadd -g 61000 osdev; \
     chown -R osdev:osdev /home/osdev;\
     chmod -R 777 /home/osdev ;\
     adduser osdev sudo;\
+    echo 'osdev:osdev' | chpasswd;\
     echo '%sudo ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers;
 
 RUN apt-get remove -y gcc && apt-get autoremove -y && apt-get clean && rm -rf /var/lib/apt/lists/*
