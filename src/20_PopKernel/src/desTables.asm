@@ -17,7 +17,7 @@ gdtFlush:
     ret               ; Return from the function
 
 
-[GLOBAL idtFlush]   ; Allows the C code to call the asm functon
+[GLOBAL idtFlush]     ; Allows the C code to call the asm functon
 
 idtFlush:
     mov eax, [esp+4]  ; Get the pointer to the IDT

@@ -16,16 +16,16 @@ int putchar(int ic) { // ic is the ascii code of the character to be printed
     char c = (char) ic; // Convert the ASCII code to a character
 
     switch (c) {
-        case '\n': // Newline character
-            cursorPos = (cursorPos / 160 + 1) * 160; // Move to the next line
+        case '\n':                                      // Newline character
+            cursorPos = (cursorPos / 160 + 1) * 160;    // Move to the next line
             break;
 
-        case '\r': // Carriage return character
-            cursorPos = cursorPos / 160 * 160; // Move to the beginning of the line
+        case '\r':                                      // Carriage return character
+            cursorPos = cursorPos / 160 * 160;          // Move to the beginning of the line
             break;
 
-        case '\t': // Tab character
-            cursorPos = (cursorPos / 8 + 1) * 8; // Move to the next tab stop
+        case '\t':                                      // Tab character
+            cursorPos = (cursorPos / 8 + 1) * 8;        // Move to the next tab stop
             break;
 
         case '\b': // Backspace character
@@ -38,11 +38,11 @@ int putchar(int ic) { // ic is the ascii code of the character to be printed
             cursorPos -= 2; // Move back 2 characters
             break;
 
-        default: // Regular character
-            videoMemory[cursorPos] = c; // Write the character to the video memory
-            videoMemory[cursorPos + 1] = currentTextColor; // Set the text color 
-            videoMemory[cursorPos + 1] |= currentBackgroundColor << 4; // Set the background color
-            cursorPos += 2;  // Move to the next character. Incremented by 2 because each character is 2 bytes long
+        default:                                                        // Regular character
+            videoMemory[cursorPos] = c;                                 // Write the character to the video memory
+            videoMemory[cursorPos + 1] = currentTextColor;              // Set the text color 
+            videoMemory[cursorPos + 1] |= currentBackgroundColor << 4;  // Set the background color
+            cursorPos += 2;                                             // Move to the next character. Incremented by 2 because each character is 2 bytes long
     }
 
     
@@ -183,8 +183,17 @@ int printf(const char* __restrict__ format, ...) {
             }
         }
 
-
-    
+        // Print if hex parameter
+        if (*format == 'x') {
+            unsigned int num = va_arg(parameters, unsigned int);
+            char str[32];
+            utoa(num, str, 16);
+            size_t len = strlen(str);
+            print(str, len);
+            format++;
+            written += len;
+            continue;
+        }
     }
 
     // End the list of arguments and return the number of characters printed

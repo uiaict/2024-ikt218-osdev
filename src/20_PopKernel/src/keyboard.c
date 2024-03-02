@@ -108,7 +108,6 @@ The drawing mode is toggled by pressing the escape key.
 You can toggle the color of the drawing by pressing the number keys 0-9 and the letters q-t.
 Drawing is done by pressing the x key.
 Navigation is done as normal with backspace, enter, and tab.
-
 */
 
 
@@ -138,19 +137,19 @@ void draw(uint8_t scanCode) {
         case 't':
             drawingColor = 15;
             break;
-        case '\n': // Newline character
+        case '\n':              // Newline character
             putchar('\n');
             break;    
-        case '\t': // Tab character
+        case '\t':              // Tab character
             putchar('\t');
             break;
-        case '\b': // Backspace character
+        case '\b':              // Backspace character
             putchar('\b');
             break;
-        case ' ': // Space character
+        case ' ':               // Space character
             putchar(' ');
             break;
-        case 'x': // Draw character
+        case 'x':               // Draw character
             videoMemory[cursorPos] = ' ';
             videoMemory[cursorPos + 1] = (videoMemory[cursorPos + 1] & 0x0F) | (drawingColor << 4);
             cursorPos += 2;

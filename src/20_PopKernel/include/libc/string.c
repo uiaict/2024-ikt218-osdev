@@ -3,8 +3,7 @@
 #include "libc/stddef.h"
 
 // Implementation of strlen
-size_t strlen(char *str) 
-{
+size_t strlen(char *str) {
 	size_t len = 0;
 	while (str[len])
 		len++;
@@ -29,8 +28,7 @@ char *strchr(char *str, int c) {
 }
 
 // Implementation of strrev function adapted from https://www.geeksforgeeks.org/implement-itoa/
-void strrev(char str[], int length)
-{
+void strrev(char str[], int length) {
     int start = 0;
     int end = length - 1;
     while (start < end) {
@@ -40,12 +38,4 @@ void strrev(char str[], int length)
         end--;
         start++;
     }
-}
-
-// Implementation of memset
-void *memset(void *str, int c, size_t n) {
-    unsigned char* ptr = (unsigned char*) str;
-    for (size_t i = 0; i < n; i++)
-        ptr[i] = c;
-    return str;
 }

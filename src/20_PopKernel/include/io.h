@@ -30,22 +30,22 @@ void scroll();
 
 // VGA color codes
 enum vgaColor {
-    vgaColorBlack = 0,
-    vgaColorBlue = 1,
-    vgaColorGreen = 2,
-    vgaColorCyan = 3,
-    vgaColorRed = 4,
-    vgaColorMagenta = 5,
-    vgaColorBrown = 6,
-    vgaColorLightGrey = 7,
-    vgaColorDarkGrey = 8,
-    vgaColorLightBlue = 9,
-    vgaColorLightGreen = 10,
-    vgaColorLightCyan = 11,
-    vgaColorLightRed = 12,
-    vgaColorLightMagenta = 13,
-    vgaColorLightBrown = 14,
-    vgaColorWhite = 15,
+    vgaColorBlack = 0,          // Black
+    vgaColorBlue = 1,           // Blue
+    vgaColorGreen = 2,          // Green
+    vgaColorCyan = 3,           // Cyan
+    vgaColorRed = 4,            // Red
+    vgaColorMagenta = 5,        // Magenta
+    vgaColorBrown = 6,          // Brown
+    vgaColorLightGrey = 7,      // Light Grey
+    vgaColorDarkGrey = 8,       // Dark Grey
+    vgaColorLightBlue = 9,      // Light Blue
+    vgaColorLightGreen = 10,    // Light Green
+    vgaColorLightCyan = 11,     // Light Cyan
+    vgaColorLightRed = 12,      // Light Red
+    vgaColorLightMagenta = 13,  // Light Magenta
+    vgaColorLightBrown = 14,    // Light Brown
+    vgaColorWhite = 15,         // White
 };
 
 #endif // _IO_H

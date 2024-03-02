@@ -62,10 +62,13 @@ file(GLOB_RECURSE OS_LIBC_SOURCES "/workspaces/2024-ikt218-osdev/src/20_PopKerne
 # Get all .c, .ccp and .asm files in the src directory
 file(GLOB_RECURSE OS_KERNEL_SOURCES "src/*.c" "src/*.cpp" "src/*.asm" "src/*s")
 
+file(GLOB_RECURSE OS_KERNEL_MEMORY "src/memory/*.c" "src/memory/*.cpp" "src/memory/*.asm" "src/memory/*s")
+
 # Add executable target for the kernel
 add_executable(uiaos-kernel 
 	${OS_KERNEL_SOURCES}
 	${OS_LIBC_SOURCES}
+	${OS_KERNEL_MEMORY}
 )
 
 # Include directories for the kernel target

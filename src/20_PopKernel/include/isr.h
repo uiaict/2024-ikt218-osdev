@@ -23,14 +23,14 @@
 #define IRQ15 47
 
 typedef struct registers {
-	uint32_t ds;  // Data segment selector
-	uint32_t edi, esi, ebp, esp, ebx, edx, ecx, eax;  // Register states
-	uint32_t intNum, errCode;  // Interrupt number and error code
-	uint32_t eip, cs, eflags, useresp, ss;  // Instruction pointer, code segment selector, flags, stack pointer, and stack segment selector
+	uint32_t ds;  											// Data segment selector
+	uint32_t edi, esi, ebp, esp, ebx, edx, ecx, eax;  		// Register states
+	uint32_t intNum, errCode;  								// Interrupt number and error code
+	uint32_t eip, cs, eflags, useresp, ss;  				// Instruction pointer, code segment selector, flags, stack pointer, and stack segment selector
 } registers_t;
 
-typedef void (*isr_t)(registers_t); // Define a type for interrupt service routines
-void registerInterruptHandler(uint8_t n, isr_t handler); // Registers an interrupt handler
+typedef void (*isr_t)(registers_t); 						// Define a type for interrupt service routines
+void registerInterruptHandler(uint8_t n, isr_t handler); 	// Registers an interrupt handler
 
 // Gives more info on the interrupt
 static const char *exceptionMessages[] = {

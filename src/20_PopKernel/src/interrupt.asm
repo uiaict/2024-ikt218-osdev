@@ -13,6 +13,16 @@ isr%1:                 ; Label for the ISR
     jmp isrCommonStub  ; Jump to the common ISR handler
 %endmacro
 
+; Macro for Interrupt Service Routine (ISR) with error code
+; Added now since we have custom handling for page faults
+%macro ISR_ERRORCODE 1
+  [GLOBAL isr%1]
+  isr%1:
+    cli
+    push byte %1
+    jmp isrCommonStub
+%endmacro
+
 ; Macro for Interrupt Request (IRQ)
 %macro IRQ 2
 [GLOBAL irq%1]         ; Declare a global symbol for the IRQ
@@ -39,7 +49,7 @@ ISR 10
 ISR 11
 ISR 12
 ISR 13
-ISR 14
+ISR_ERRORCODE 14        ; Page fault gives an error code. Since we now have custom handling for page faults, we need to handle the error code
 ISR 15
 ISR 16
 ISR 17
