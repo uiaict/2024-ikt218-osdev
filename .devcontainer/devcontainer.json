@@ -13,7 +13,7 @@
 	////////////////////////////////////
 	// UNCOMMENT to use prebuilt image
 	////////////////////////////////////
-	"image": "ghcr.io/uiaict/2024-ikt218-osdev/devcontainer:2776417",
+	"image": "ghcr.io/uiaict/2024-ikt218-osdev/devcontainer:0bd4640",
 
 	////////////////////////////////////
 	// UNCOMMENT to build manually

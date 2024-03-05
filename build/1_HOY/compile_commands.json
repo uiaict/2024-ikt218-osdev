@@ -1,0 +1,27 @@
+[
+{
+  "directory": "/workspaces/2024-ikt218-osdev/build/1_HOY",
+  "command": "/usr/bin/nasm -I/workspaces/2024-ikt218-osdev/src/1_HOY/include -f elf32 -o CMakeFiles/uiaos-kernel.dir/src/multiboot2.asm.o /workspaces/2024-ikt218-osdev/src/1_HOY/src/multiboot2.asm",
+  "file": "/workspaces/2024-ikt218-osdev/src/1_HOY/src/multiboot2.asm"
+},
+{
+  "directory": "/workspaces/2024-ikt218-osdev/build/1_HOY",
+  "command": "/usr/local/bin/i686-elf-gcc -I/workspaces/2024-ikt218-osdev/src/1_HOY/include -g -Wall -Wextra -nostdinc -nostdlib -fno-builtin -fno-stack-protector -fno-stack-check -fno-lto -fPIE -m32 -march=i386 -mno-mmx -mno-sse -mno-sse2 -mno-red-zone -Wno-main -g -Wno-unused-variable -Wno-unused-parameter -std=gnu99 -o CMakeFiles/uiaos-kernel.dir/src/kernel.c.o -c /workspaces/2024-ikt218-osdev/src/1_HOY/src/kernel.c",
+  "file": "/workspaces/2024-ikt218-osdev/src/1_HOY/src/kernel.c"
+},
+{
+  "directory": "/workspaces/2024-ikt218-osdev/build/1_HOY",
+  "command": "/usr/local/bin/i686-elf-g++ -I/workspaces/2024-ikt218-osdev/src/1_HOY/include -g -Wall -Wextra -nostdinc -nostdlib -fno-builtin -fno-stack-protector -fno-stack-check -fno-lto -fPIE -m32 -march=i386 -mno-mmx -mno-sse -mno-sse2 -mno-red-zone -g -Wno-unused-variable -Wno-unused-parameter -std=gnu++20 -o CMakeFiles/uiaos-kernel.dir/src/kernel.cpp.o -c /workspaces/2024-ikt218-osdev/src/1_HOY/src/kernel.cpp",
+  "file": "/workspaces/2024-ikt218-osdev/src/1_HOY/src/kernel.cpp"
+},
+{
+  "directory": "/workspaces/2024-ikt218-osdev/build/1_HOY",
+  "command": "/usr/local/bin/i686-elf-gcc -I/workspaces/2024-ikt218-osdev/src/1_HOY/include -g -Wall -Wextra -nostdinc -nostdlib -fno-builtin -fno-stack-protector -fno-stack-check -fno-lto -fPIE -m32 -march=i386 -mno-mmx -mno-sse -mno-sse2 -mno-red-zone -Wno-main -g -Wno-unused-variable -Wno-unused-parameter -std=gnu99 -o CMakeFiles/uiaos-kernel.dir/src/gdt.c.o -c /workspaces/2024-ikt218-osdev/src/1_HOY/src/gdt.c",
+  "file": "/workspaces/2024-ikt218-osdev/src/1_HOY/src/gdt.c"
+},
+{
+  "directory": "/workspaces/2024-ikt218-osdev/build/1_HOY",
+  "command": "/usr/bin/nasm -I/workspaces/2024-ikt218-osdev/src/1_HOY/include -f elf32 -o CMakeFiles/uiaos-kernel.dir/src/gdt.asm.o /workspaces/2024-ikt218-osdev/src/1_HOY/src/gdt.asm",
+  "file": "/workspaces/2024-ikt218-osdev/src/1_HOY/src/gdt.asm"
+}
+]
