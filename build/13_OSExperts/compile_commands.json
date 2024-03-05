@@ -1,0 +1,32 @@
+[
+{
+  "directory": "/workspaces/ikt218g24v/build/13_OSExperts",
+  "command": "/usr/local/bin/i686-elf-gcc -I/workspaces/ikt218g24v/src/13_OSExperts/include -g -Wall -Wextra -nostdinc -nostdlib -fno-builtin -fno-stack-protector -fno-stack-check -fno-lto -fPIE -m32 -march=i386 -mno-mmx -mno-sse -mno-sse2 -mno-red-zone -Wno-main -g -Wno-unused-variable -Wno-unused-parameter -std=gnu99 -o CMakeFiles/uiaos-kernel.dir/src/function.c.o -c /workspaces/ikt218g24v/src/13_OSExperts/src/function.c",
+  "file": "/workspaces/ikt218g24v/src/13_OSExperts/src/function.c"
+},
+{
+  "directory": "/workspaces/ikt218g24v/build/13_OSExperts",
+  "command": "/usr/bin/nasm -I/workspaces/ikt218g24v/src/13_OSExperts/include -f elf32 -o CMakeFiles/uiaos-kernel.dir/src/gdt.asm.o /workspaces/ikt218g24v/src/13_OSExperts/src/gdt.asm",
+  "file": "/workspaces/ikt218g24v/src/13_OSExperts/src/gdt.asm"
+},
+{
+  "directory": "/workspaces/ikt218g24v/build/13_OSExperts",
+  "command": "/usr/local/bin/i686-elf-gcc -I/workspaces/ikt218g24v/src/13_OSExperts/include -g -Wall -Wextra -nostdinc -nostdlib -fno-builtin -fno-stack-protector -fno-stack-check -fno-lto -fPIE -m32 -march=i386 -mno-mmx -mno-sse -mno-sse2 -mno-red-zone -Wno-main -g -Wno-unused-variable -Wno-unused-parameter -std=gnu99 -o CMakeFiles/uiaos-kernel.dir/src/gdt.c.o -c /workspaces/ikt218g24v/src/13_OSExperts/src/gdt.c",
+  "file": "/workspaces/ikt218g24v/src/13_OSExperts/src/gdt.c"
+},
+{
+  "directory": "/workspaces/ikt218g24v/build/13_OSExperts",
+  "command": "/usr/local/bin/i686-elf-gcc -I/workspaces/ikt218g24v/src/13_OSExperts/include -g -Wall -Wextra -nostdinc -nostdlib -fno-builtin -fno-stack-protector -fno-stack-check -fno-lto -fPIE -m32 -march=i386 -mno-mmx -mno-sse -mno-sse2 -mno-red-zone -Wno-main -g -Wno-unused-variable -Wno-unused-parameter -std=gnu99 -o CMakeFiles/uiaos-kernel.dir/src/kernel.c.o -c /workspaces/ikt218g24v/src/13_OSExperts/src/kernel.c",
+  "file": "/workspaces/ikt218g24v/src/13_OSExperts/src/kernel.c"
+},
+{
+  "directory": "/workspaces/ikt218g24v/build/13_OSExperts",
+  "command": "/usr/local/bin/i686-elf-g++ -I/workspaces/ikt218g24v/src/13_OSExperts/include -g -Wall -Wextra -nostdinc -nostdlib -fno-builtin -fno-stack-protector -fno-stack-check -fno-lto -fPIE -m32 -march=i386 -mno-mmx -mno-sse -mno-sse2 -mno-red-zone -g -Wno-unused-variable -Wno-unused-parameter -std=gnu++20 -o CMakeFiles/uiaos-kernel.dir/src/kernel.cpp.o -c /workspaces/ikt218g24v/src/13_OSExperts/src/kernel.cpp",
+  "file": "/workspaces/ikt218g24v/src/13_OSExperts/src/kernel.cpp"
+},
+{
+  "directory": "/workspaces/ikt218g24v/build/13_OSExperts",
+  "command": "/usr/bin/nasm -I/workspaces/ikt218g24v/src/13_OSExperts/include -f elf32 -o CMakeFiles/uiaos-kernel.dir/src/multiboot2.asm.o /workspaces/ikt218g24v/src/13_OSExperts/src/multiboot2.asm",
+  "file": "/workspaces/ikt218g24v/src/13_OSExperts/src/multiboot2.asm"
+}
+]

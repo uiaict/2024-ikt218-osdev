@@ -1,11 +1,11 @@
 {
-    "cmake.buildDirectory": "${workspaceFolder}/build/group_name",
-    "cmake.sourceDirectory": "${workspaceFolder}/src/group_name",
+    "cmake.buildDirectory": "${workspaceFolder}/build/13_OSExperts",
+    "cmake.sourceDirectory": "${workspaceFolder}/src/13_OSExperts",
     "C_Cpp.errorSquiggles": "disabled",
     "files.associations": {
         "cstddef": "cpp",
-        "*.tcc": "cpp",
-        "*.ipp": "cpp",
+        ".tcc": "cpp",
+        ".ipp": "cpp",
         "stdbool.h": "c",
         "stddef.h": "c",
         "stdio.h": "c",
