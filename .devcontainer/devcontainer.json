@@ -13,7 +13,7 @@
 	////////////////////////////////////
 	// UNCOMMENT to use prebuilt image
 	////////////////////////////////////
-	"image": "ghcr.io/uiaict/2024-ikt218-osdev/devcontainer:2776417",
+	"image": "ghcr.io/uiaict/2024-ikt218-osdev/devcontainer-webgui:0bd4640",
 
 	////////////////////////////////////
 	// UNCOMMENT to build manually
@@ -36,12 +36,12 @@
 	////////////////////////////////////
 	// Windows Setup (WSL2)
 	////////////////////////////////////
-    //"mounts": [
-	//	"source=/mnt/wslg,target=/mnt/wslg,type=bind,consistency=cached"
-    //],
-	//"containerEnv": {
-	//	"PULSE_SERVER": "/mnt/wslg/PulseServer"
-	//},
+    "mounts": [
+		"source=/mnt/wslg,target=/mnt/wslg,type=bind,consistency=cached"
+    ],
+	"containerEnv": {
+		"PULSE_SERVER": "/mnt/wslg/PulseServer"
+	},
 
 
 	////////////////////////////////////
