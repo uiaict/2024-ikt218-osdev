@@ -15,20 +15,13 @@ int kernel_main();
 
 int main(uint32_t magic, struct multiboot_info* mb_info_addr)
 {
-    int32_t numbers[] = {
-        0,
-        -123,
-        77777,
-        -293,
-        123566,
-        998202
-    };
-
-    for (size_t i = 0; i < array_size(numbers); i++)
-    {
-        monitor_write_sdec(numbers[i]);
-        monitor_write("\n");
-    }
+    const int32_t number = 123456789;
+    monitor_write("Number: ");
+    monitor_write_udec(number);
+    monitor_write(", in hex: 0x75BCD15\n");
+    monitor_write("monitor_write_hex result: ");
+    monitor_write_hex(number);
+    monitor_write("\n");
 
     // Call cpp kernel_main (defined in kernel.cpp)
     return kernel_main();

@@ -12,6 +12,7 @@
 uint16_t *Video = (uint16_t*)(VIDEO_MEMORY_ADDRESS);
 uint16_t Cursor_x = 0, Cursor_y = 0;
 
+// Moves screen cursor ahead
 static void monitor_move_cursor()
 {
     const uint16_t cursor = Cursor_y * VIDEO_SCREEN_WIDTH + Cursor_x;
@@ -56,7 +57,6 @@ static void monitor_scroll_down()
     }
 }
 
-// Writes a single character out to the screen.
 void monitor_put(char c)
 {
     const uint8_t attributeByte = get_attribute_byte(VIDEO_SCREEN_BG, VIDEO_SCREEN_FG);
@@ -137,7 +137,18 @@ void monitor_write(const char *c_str)
 
 void monitor_write_hex(uint32_t number)
 {
-    //
+    // 8 digits + 0x + null terminator
+    char hex[11] = {};
+    hex[0] = '0';
+    hex[1] = 'x';
+
+    for (int32_t i = 7; i >= 0; i--)
+    {
+        const int32_t nibble = (number >> (4 * i)) & 0xF;
+        hex[9 - i] = (nibble < 10) ? '0' + nibble : 'A' + (nibble - 10);
+    }
+
+    monitor_write(hex);
 }
 
 void monitor_write_udec(uint32_t number)
@@ -189,4 +200,12 @@ void monitor_write_sdec(int32_t number)
     {
         monitor_put(temp[j]);
     }
+}
+
+void monitor_write_bool(bool b)
+{
+    if(b == true)
+        monitor_write("true");
+    else
+        monitor_write("false");
 }
