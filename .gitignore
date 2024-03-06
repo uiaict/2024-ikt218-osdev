@@ -15,4 +15,5 @@ build.ninja
 
 00_per_arne
 src/group_name/src/kernel.c
-build
+*.iso
+*.bin
