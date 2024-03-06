@@ -11,10 +11,11 @@ struct multiboot_info {
 };
 
 int kernel_main();
-
+void initScreen(void);
+void putString(unsigned char *string);
 
 int main(uint32_t magic, struct multiboot_info* mb_info_addr) {
-
+    initScreen();
 
     // Call cpp kernel_main (defined in kernel.cpp)
     return kernel_main();

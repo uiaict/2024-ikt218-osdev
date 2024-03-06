@@ -63,8 +63,11 @@ add_executable(uiaos-kernel
 	src/kernel.cpp
 
 	# 5_OsExp
-	src/gdt/gdt.asm
-	src/sector0/sector0.asm
+	# Writing this in C instead, had issues
+	# src/gdt/gdt.asm
+	# src/printf/printf.asm
+
+	src/console/screen.c
 )
 
 # Include directories for the kernel target
