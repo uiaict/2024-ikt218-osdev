@@ -15,9 +15,21 @@ int kernel_main();
 
 int main(uint32_t magic, struct multiboot_info* mb_info_addr)
 {
+    int32_t numbers[] = {
+        0,
+        -123,
+        77777,
+        -293,
+        123566,
+        998202
+    };
+
+    for (size_t i = 0; i < array_size(numbers); i++)
+    {
+        monitor_write_sdec(numbers[i]);
+        monitor_write("\n");
+    }
+
     // Call cpp kernel_main (defined in kernel.cpp)
-    monitor_put('A');
-    monitor_put('B');
-    monitor_put('C');
     return kernel_main();
 }
