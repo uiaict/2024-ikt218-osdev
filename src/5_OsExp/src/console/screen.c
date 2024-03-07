@@ -3,7 +3,7 @@
 // http://www.osdever.net/bkerndev/Docs/printing.htm 
 // https://embeddedartistry.com/blog/2017/03/22/memset-memcpy-memcmp-and-memmove/ 
 
-#include <system.h>
+// #include <system.h>
 
 // TODO: implement functions
 

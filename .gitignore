@@ -16,6 +16,7 @@ build.ninja
 01_jp
 .vscode/settings.json
 .devcontainer/devcontainer.json
+REPORT.md
 
 00_per_arne
 src/group_name/src/kernel.c
