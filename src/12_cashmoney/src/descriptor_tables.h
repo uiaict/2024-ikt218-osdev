@@ -19,3 +19,5 @@ struct gdt_ptr_struct
    uint32_t base;                // The address of the first gdt_entry_t struct.
 }__attribute__((packed));
 typedef struct gdt_ptr_struct gdt_ptr_t;
+
+void init_descriptor_tables();
