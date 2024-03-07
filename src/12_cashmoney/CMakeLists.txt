@@ -25,7 +25,7 @@ include(FetchContent)
 ########################################
 # UiAOS: Variables
 ########################################
-set(OS_ARCH_TARGET "i386")  # x86_64 
+set(OS_ARCH_TARGET "i386")  # x86_64
 set(OS_NAME "UiA Operating System")
 set(OS_KERNEL_NAME "uiaos")
 set(OS_KERNEL_BINARY "kernel.bin")
@@ -48,7 +48,7 @@ elseif(OS_ARCH_TARGET STREQUAL "x86_64")
 endif()
 
 # Command to compile NASM files
-set(CMAKE_ASM_NASM_COMPILE_OBJECT 
+set(CMAKE_ASM_NASM_COMPILE_OBJECT
     "<CMAKE_ASM_NASM_COMPILER> <DEFINES> <INCLUDES> <FLAGS> -f ${CMAKE_ASM_NASM_OBJECT_FORMAT} -o <OBJECT> <SOURCE>")
 
 ########################################
@@ -57,10 +57,14 @@ set(CMAKE_ASM_NASM_COMPILE_OBJECT
 set(OS_KERNEL_LINKER "${CMAKE_CURRENT_SOURCE_DIR}/src/arch/${OS_ARCH_TARGET}/linker.ld")
 
 # Add executable target for the kernel
-add_executable(uiaos-kernel 
-	# src/multiboot2.asm # TODO: Add multiboot2 support
+add_executable(uiaos-kernel
+	src/common.c
+	src/monitor.c
+	src/multiboot2.asm # TODO: Add multiboot2 support
     src/kernel.c
 	src/kernel.cpp
+	src/descriptor_tables.c
+	src/gdt_flush.asm
 )
 
 # Include directories for the kernel target
@@ -120,7 +124,7 @@ add_custom_target(
 	uiaos-create-image
 	COMMAND rm -rf ${ISO_DIR}
 	COMMAND mkdir -p ${ISO_DIR}
-	COMMAND cp -v $<TARGET_FILE:uiaos-kernel> 
+	COMMAND cp -v $<TARGET_FILE:uiaos-kernel>
 	 	${LIMINE_CONFIG_DIR}/limine.cfg ${LIMINE_DIR}/limine-bios.sys ${LIMINE_DIR}/limine-bios-cd.bin
 		${LIMINE_DIR}/limine-uefi-cd.bin ${ISO_DIR}/
 	COMMAND mkdir -p ${ISO_DIR}/EFI/BOOT
