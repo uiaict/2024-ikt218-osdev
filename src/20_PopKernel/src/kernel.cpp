@@ -9,6 +9,8 @@ extern "C" {
     int kernel_main(void);
 }
 
+#include "songPlayer/song.h"
+
 // Existing global operator new overloads
 void* operator new(size_t size) {
     return malloc(size);
@@ -39,14 +41,40 @@ void operator delete[](void* ptr, size_t size) noexcept {
 }
 
 int kernel_main(){
-    void* someMemory = malloc(12345); 
+/*     void* someMemory = malloc(12345); 
     void* memory2 = malloc(54321); 
     void* memory3 = malloc(13331);
-    char* memory4 = new char[1000]();
+    char* memory4 = new char[1000](); */
 
-    int counter = 0;
 
-/*     while(true){
+    // Create an array of songs
+    Song* songs[] = {
+        new Song{music1, sizeof(music1) / sizeof(Note)},
+        new Song{music2, sizeof(music2) / sizeof(Note)},
+        new Song{music3, sizeof(music3) / sizeof(Note)},
+        new Song{music4, sizeof(music4) / sizeof(Note)},
+        new Song{music5, sizeof(music5) / sizeof(Note)},
+        new Song{music6, sizeof(music6) / sizeof(Note)},
+        new Song{starwarsTheme, sizeof(starwarsTheme) / sizeof(Note)},
+        new Song{battlefield1942Theme, sizeof(battlefield1942Theme) / sizeof(Note)},
+    };
+
+    uint32_t nSongs = sizeof(songs) / sizeof(Song*); // Get the number of songs
+
+    SongPlayer* player = createSongPlayer(); // Create a new SongPlayer instance
+
+    // Play the songs
+    while(true){
+        for(uint32_t i = 0; i < nSongs; i++){
+            printf("Playing Song...\n");
+            player->playSong(songs[i]);
+            printf("Finished playing the song.\n");
+        }
+    }
+
+/*     int counter = 0;
+
+    while(true){
         printf("[%d]: Sleeping with busy-waiting (HIGH CPU).\n", counter);
         sleepBusy(1000);
         printf("[%d]: Slept using busy-waiting.\n", counter++);
@@ -54,7 +82,7 @@ int kernel_main(){
         printf("[%d]: Sleeping with interrupts (LOW CPU).\n", counter);
         sleepInterrupt(1000);
         printf("[%d]: Slept using interrupts.\n", counter++);
-    }; */
-
+    };
+ */
     while (true){}
 }

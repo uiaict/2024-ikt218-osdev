@@ -12,6 +12,7 @@
 #include "memory.h"
 #include "kernelUtils.h"
 #include "pit.h"
+#include "songPlayer/frequencies.h"
 
 extern uint32_t end; 
 
@@ -50,5 +51,9 @@ int main(uint32_t magic, struct multiboot_info* mb_info_addr) {
     uint32_t do_page_fault = *ptr; */
 
  
+                     
+
+    // Prints the different types of data to the screen
+    //printf("%s\n", strTest);
     return kernel_main(); // Call the kernel_main function
 }
