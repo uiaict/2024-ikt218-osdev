@@ -11,11 +11,15 @@ struct multiboot_info {
 };
 
 int kernel_main();
+
+// 5_OsExp functions
 void initScreen(void);
 void putString(unsigned char *string);
 
 int main(uint32_t magic, struct multiboot_info* mb_info_addr) {
-    initScreen();
+    initScreen(); // Clear screen and initialize memory buffer for text.
+
+    putString((unsigned char *)"Hello, World!\n");
 
     // Call cpp kernel_main (defined in kernel.cpp)
     return kernel_main();

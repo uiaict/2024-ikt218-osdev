@@ -1,5 +1,3 @@
-; Don't use
-
 ; SOURCE:
 ; 05.03
 ; https://medium.com/@jshschiavone/an-introduction-to-i386-boot-loader-programming-823354b80846
