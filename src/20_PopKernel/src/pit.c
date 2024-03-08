@@ -17,7 +17,7 @@ uint32_t getCurrentTick() {
 
 // Initializes the PIT
 void initPit() {
-
+    printf("Initializing PIT\n");
     outb(PIT_CMD_PORT, 0x36);                                       // Send the command byte to the PIT
     outb(PIT_CHANNEL0_PORT, (uint8_t)(DIVIDER & 0xFF));             // Low byte of divisor
     outb(PIT_CHANNEL0_PORT, (uint8_t)((DIVIDER >> 8) & 0xFF));      // High byte of divisor

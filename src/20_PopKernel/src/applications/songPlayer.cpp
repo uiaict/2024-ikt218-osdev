@@ -6,8 +6,8 @@ extern "C" {
     #include "io.h"
 }
 
-#include "songPlayer/song.h"
-#include "songPlayer/frequencies.h"
+#include "applications/song.h"
+#include "applications/frequencies.h"
 
 // Enable the speaker
 void enableSpeaker() {

@@ -12,6 +12,7 @@
 #define RIGHT_SHIFT 0x36
 #define CAPS_LOCK 0x3A
 #define ESCAPE 0x01
+#define CHARACTER_BUFFER_SIZE 256
 
 void initKeyboard();
 void keyboardHandler(registers_t reg);
@@ -23,6 +24,10 @@ static bool shiftPressed = false;
 static bool capsLockEnabled = false;
 static bool drawingMode = false;
 extern uint8_t drawingColor;
+
+// Buffer for capturing input
+extern char charBuffer[];
+extern int bufferIndex;
 
 
 // There are two scenarios where we want to write to the screen

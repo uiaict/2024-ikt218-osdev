@@ -12,7 +12,7 @@
 #include "memory.h"
 #include "kernelUtils.h"
 #include "pit.h"
-#include "songPlayer/frequencies.h"
+#include "applications/frequencies.h"
 
 extern uint32_t end; 
 
@@ -39,21 +39,5 @@ int main(uint32_t magic, struct multiboot_info* mb_info_addr) {
     changeBackgroundColor(vgaColorDarkGrey);        // Changes the background color to dark grey
     changeTextColor(vgaColorWhite);                 // Changes the text color to white
 
-    char strTest[] = "Hello World!";                // Creates test variables to be used for printf testing
-    int intTest = 123;
-    unsigned int uintTest = 1234567890;
-    float floatTest = 3.14;
-    double doubleTest = 3.14159;
-    char hexTest[] = "0x01";
-
-    // Trigger page fault intentionally
-/*     uint32_t *ptr = (uint32_t*)0xE0000000;
-    uint32_t do_page_fault = *ptr; */
-
- 
-                     
-
-    // Prints the different types of data to the screen
-    //printf("%s\n", strTest);
     return kernel_main(); // Call the kernel_main function
 }

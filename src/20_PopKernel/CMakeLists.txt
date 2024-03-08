@@ -63,12 +63,14 @@ file(GLOB_RECURSE OS_LIBC_SOURCES "/workspaces/2024-ikt218-osdev/src/20_PopKerne
 file(GLOB_RECURSE OS_KERNEL_SOURCES "src/*.c" "src/*.cpp" "src/*.asm" "src/*s")
 
 file(GLOB_RECURSE OS_KERNEL_MEMORY "src/memory/*.c" "src/memory/*.cpp" "src/memory/*.asm" "src/memory/*s")
+file(GLOB_RECURSE OS_KERNEL_APPLICATIONS "src/applications/*.c" "src/applications/*.cpp" "src/applications/*.asm" "src/applications/*s")
 
 # Add executable target for the kernel
 add_executable(uiaos-kernel 
 	${OS_KERNEL_SOURCES}
 	${OS_LIBC_SOURCES}
 	${OS_KERNEL_MEMORY}
+	${OS_KERNEL_APPLICATIONS}
 )
 
 # Include directories for the kernel target

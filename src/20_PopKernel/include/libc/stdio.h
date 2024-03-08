@@ -7,6 +7,8 @@
 int putchar(int ic);                                // Print a character        
 bool print(const char* data, size_t length);        // Print a string of characters
 int printf(const char* __restrict__ format, ...);   // Print a formatted string
-void sprintf(char* str, const char* format, ...);   // Print a formatted string to a buffer
+char getchar();                                     // Get a character from the keyboard
+void scanf(const char* __restrict__ format, ...);   // Get a formatted string from the keyboard
+int isspace(int c);                                 // Check if a character is a space
 
 

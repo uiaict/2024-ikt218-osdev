@@ -6,9 +6,12 @@
 #include "libc/stdbool.h"
 
 uint8_t drawingColor = DEFAULT_BACKGROUND_COLOR;
+char charBuffer[0];
+int bufferIndex = 0;
 
 // Initializes the keyboard
 void initKeyboard() {
+    printf("Initializing keyboard\n");
     registerInterruptHandler(IRQ1, &keyboardHandler);
 }
 
@@ -79,6 +82,11 @@ void keyboardHandler(registers_t regs) {
                 ascii = defaultLookup[scanCode];
             }
 
+            if (bufferIndex < CHARACTER_BUFFER_SIZE ) {
+                charBuffer[bufferIndex] = ascii;
+                bufferIndex++;
+            }
+
             freeWrite(ascii); // Writes the character to the screen
         }
     }
@@ -109,8 +117,6 @@ You can toggle the color of the drawing by pressing the number keys 0-9 and the 
 Drawing is done by pressing the x key.
 Navigation is done as normal with backspace, enter, and tab.
 */
-
-
 void draw(uint8_t scanCode) {
     
     char ascii = defaultLookup[scanCode];

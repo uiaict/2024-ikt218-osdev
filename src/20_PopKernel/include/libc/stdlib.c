@@ -1,6 +1,5 @@
 #include "libc/stdlib.h"
 #include "libc/string.h"
-#include "libc/math.h"
 
 // Implementation of the itoa function adapted from https://www.geeksforgeeks.org/implement-itoa/
 char* itoa(int num, char* str, int base)
