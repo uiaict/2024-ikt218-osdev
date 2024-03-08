@@ -1,3 +1,7 @@
+# SOURCES AND ACKNOWLEDGEMENTS
+
+A file with sources and acknowledgements will be published later in May. For now it is recorded and kept separate.
+
 # Workflow
 
 CTRL+SHIFT+P henceforth know as _menu_
