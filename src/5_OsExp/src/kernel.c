@@ -3,6 +3,7 @@
 #include "libc/stdbool.h"
 #include <multiboot2.h>
 
+#include "screen.h"
 
 struct multiboot_info {
     uint32_t size;
@@ -11,10 +12,6 @@ struct multiboot_info {
 };
 
 int kernel_main();
-
-// 5_OsExp functions
-void initScreen(void);
-void putString(unsigned char *string);
 
 int main(uint32_t magic, struct multiboot_info* mb_info_addr) {
     initScreen(); // Clear screen and initialize memory buffer for text.

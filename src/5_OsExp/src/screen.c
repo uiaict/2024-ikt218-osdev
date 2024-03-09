@@ -3,6 +3,8 @@
 #include "stdport.h"
 #include "stdtxt.h"
 
+#include "screen.h"
+
 // BUG: Currently the screen size of the Qemu window is not fitted to our dimensions. Look into this.
 // VGA MODE 3
 #define VGA_ADDRESS 0xB8000
@@ -13,36 +15,6 @@ unsigned short *textptr; // Beginning of video memory buffer. This is a chunk of
 int attribute = 0x0F; // Upper 8-bits defining color, background and foreground. This sets background to black and text to white.
 int cursor_x = 0;
 int cursor_y = 0;
-
-// 
-// 
-// 
-/* DECLARATIONS */
-// 
-// 
-// 
-
-void initScreen(void);
-
-void clearScreen(void);
-
-void scrollScreen(void);
-
-void cursorBlinker(void);
-
-void putChar(unsigned char c);
-
-void putString(unsigned char *string);
-
-void setTextColor(unsigned char background_color, unsigned char foreground_color);
-
-//
-//
-//
-/* DEFINITIONS */
-// 
-// 
-// 
 
 // Call to initialize screen before trying to use it.
 void initScreen(void) {
