@@ -68,6 +68,7 @@ add_executable(uiaos-kernel
 	stdlib/stdport.c
 	stdlib/stdtxt.c
 	src/screen.c
+	src/gdt.c
 )
 
 # Include directories for the kernel target

@@ -4,6 +4,7 @@
 #include <multiboot2.h>
 
 #include "screen.h"
+#include "gdt.h"
 
 struct multiboot_info {
     uint32_t size;
@@ -14,6 +15,7 @@ struct multiboot_info {
 int kernel_main();
 
 int main(uint32_t magic, struct multiboot_info* mb_info_addr) {
+    gdt_install();
     initScreen(); // Clear screen and initialize memory buffer for text.
 
     putString((unsigned char *)"Hello, World!\n");
