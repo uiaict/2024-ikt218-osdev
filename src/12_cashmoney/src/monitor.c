@@ -137,18 +137,26 @@ void monitor_write(const char *c_str)
 
 void monitor_write_hex(uint32_t number)
 {
-    // 8 digits + 0x + null terminator
-    char hex[11] = {};
-    hex[0] = '0';
-    hex[1] = 'x';
+    // uint32 max is 0xFFFFFFFF
+    char temp[10] = {};
+    int32_t i = 1;
 
-    for (int32_t i = 7; i >= 0; i--)
+    // Get digits and put them in temp
+    while(number != 0)
     {
-        const int32_t nibble = (number >> (4 * i)) & 0xF;
-        hex[9 - i] = (nibble < 10) ? '0' + nibble : 'A' + (nibble - 10);
+        const uint8_t digit = number % 16;
+        // Add 0 to get ascii number
+        temp[i++] = digit < 10 ? digit + '0' : 'A' + (digit - 10);
+        number /= 16;
     }
 
-    monitor_write(hex);
+    monitor_put('0');
+    monitor_put('x');
+
+    for (size_t j = i; j > 0; j--)
+    {
+        monitor_put(temp[j]);
+    }
 }
 
 void monitor_write_udec(uint32_t number)
