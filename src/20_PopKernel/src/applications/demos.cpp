@@ -75,7 +75,7 @@ void isrDemo() {
 
 // Causes a page fault to demonstrate the page fault handler
 void pageFaultDemo() {
-    printf("Running page fault demo causes a panic. Do you want to continout [y/n]\n");
+    printf("Running page fault demo causes a panic. Do you want to continue [y/n]\n");
     char c = getchar();
     // Clears the y/n input
     videoMemory[cursorPos] = ' ';

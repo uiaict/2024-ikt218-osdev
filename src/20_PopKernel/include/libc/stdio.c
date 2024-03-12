@@ -240,9 +240,13 @@ void scanf(const char* __restrict__ format, ...) {
                 int j = 0;
                 char ch = getchar();                            // Get the first character from the user
                 
-                while (!isspace(ch) && j < 99) {                // Loop through each character and add it to the variable
-                    var[j] = ch;
-                    j++;
+                while (ch != '\n' && j < 99) {                  // Loop through each character and add it to the variable
+                    if (ch == '\b' && j > 0) {                  
+                        j--;
+                    } else if (!isspace(ch)) {
+                        var[j] = ch;
+                        j++;
+                    }
                     ch = getchar();
                 }
                 var[j] = '\0';

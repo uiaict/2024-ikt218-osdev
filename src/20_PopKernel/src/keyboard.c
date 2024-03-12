@@ -82,9 +82,9 @@ void keyboardHandler(registers_t regs) {
                 ascii = defaultLookup[scanCode];
             }
 
-            if (bufferIndex < CHARACTER_BUFFER_SIZE ) {
-                charBuffer[bufferIndex] = ascii;
-                bufferIndex++;
+            if (bufferIndex < CHARACTER_BUFFER_SIZE) {
+                    charBuffer[bufferIndex] = ascii;
+                    bufferIndex++;
             }
 
             freeWrite(ascii); // Writes the character to the screen

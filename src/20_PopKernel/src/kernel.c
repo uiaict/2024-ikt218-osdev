@@ -39,5 +39,5 @@ int main(uint32_t magic, struct multiboot_info* mb_info_addr) {
     changeBackgroundColor(vgaColorDarkGrey);        // Changes the background color to dark grey
     changeTextColor(vgaColorWhite);                 // Changes the text color to white
 
-    return kernel_main(); // Call the kernel_main function
+    return kernel_main();                           // Call the kernel_main function
 }
