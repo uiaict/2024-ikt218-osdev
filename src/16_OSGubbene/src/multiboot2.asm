@@ -38,6 +38,7 @@ _start:
 	push eax
 
     call main ; Jump main function
+    hlt ; Ensures the program does not continue executing random memory for example main again as it did without hlt
 
 section .bss
 stack_bottom:
