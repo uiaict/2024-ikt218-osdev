@@ -25,7 +25,7 @@ struct gdt_ptr
 
 
 // GDT Descriptor
-void gdt_set_gate(int index, uint32_t base, uint32_t limit, uint8_t access, uint8_t gran);
+void gdt_set_gate(uint8_t index, uint32_t base, uint32_t limit, uint8_t access, uint8_t gran);
 
 // Install special pointer and GDT entries, as well as tell CPU where GDT is with gdt_flush
 void gdt_install();

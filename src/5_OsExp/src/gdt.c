@@ -2,9 +2,9 @@
 
 struct gdt_entry gdt[3];
 
-struct gdt_ptr gp;
+struct gdt_ptr gdtp;
 
-void gdt_set_gate(int index, uint32_t base, uint32_t limit, uint8_t access, uint8_t gran)
+void gdt_set_gate(uint8_t index, uint32_t base, uint32_t limit, uint8_t access, uint8_t gran)
 {
     // Base addresses in the descriptor, length 32 bits
     gdt[index].base_low = (base & 0xFFFF);                  // Lower 16 bits, AND'ing bitmask to preserve 16 bits.
@@ -16,14 +16,14 @@ void gdt_set_gate(int index, uint32_t base, uint32_t limit, uint8_t access, uint
     gdt[index].granularity = ((limit >> 16) & 0x000F);      // High 4 bits of the limit, shifted right 16 spaces
     
     // Granularity and access flags in the descriptor
-    gdt[index].granularity |= (gran & 0xF0);              // Granularity 4 bits (upper nibble), OR'ed with gran
+    gdt[index].granularity |= (gran & 0xF0);                // Granularity 4 bits (upper nibble), OR'ed with gran
     gdt[index].access = access;                             // Access flags 8 bits
 }
 
 void gdt_install()
 {
-    gp.limit = (sizeof(struct gdt_entry) * 3) - 1; // Limit of GDT, ie. the size in memory of the GDT
-    gp.base = (uint32_t)&gdt; // Pointer to start of GDT in memory
+    gdtp.limit = (sizeof(struct gdt_entry) * 3) - 1; // Limit of GDT, ie. the size in memory of the GDT
+    gdtp.base = (uint32_t)&gdt; // Pointer to start of GDT in memory
     
     gdt_set_gate(0, 0, 0, 0, 0); // NULL descriptor, index 0
 
