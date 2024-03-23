@@ -68,6 +68,7 @@ add_executable(uiaos-kernel
 	src/stdlib/stdport.c
 	src/stdlib/stdtxt.c
 	src/screen/screen.c
+	src/screen/splash.c
 	src/gdt/gdt.c
 	src/idt/idt.c
 )

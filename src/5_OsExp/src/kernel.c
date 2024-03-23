@@ -6,6 +6,7 @@
 #include "stdtxt.h"
 #include "gdt.h"
 #include "idt.h"
+#include "splash.h"
 
 struct multiboot_info {
     uint32_t size;
@@ -19,8 +20,7 @@ int main(uint32_t magic, struct multiboot_info* mb_info_addr) {
     gdtInitialize();
     idtInitialize();
     initScreen(); // Clear screen and initialize memory buffer for text.
-
-    printString("Hello, World!\n");
+    splashScreen();
 
     // Call cpp kernel_main (defined in kernel.cpp)
     return kernel_main();
