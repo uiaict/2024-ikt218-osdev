@@ -3,7 +3,7 @@
 #include "libc/stdbool.h"
 #include <multiboot2.h>
 
-#include "screen.h"
+#include "stdlib/stdtxt.h"
 #include "gdt.h"
 #include "idt.h"
 
@@ -16,11 +16,11 @@ struct multiboot_info {
 int kernel_main();
 
 int main(uint32_t magic, struct multiboot_info* mb_info_addr) {
-    gdt_init();
-    idt_install();
+    gdtInitialize();
+    idtInitialize();
     initScreen(); // Clear screen and initialize memory buffer for text.
 
-    putString((uint8_t *)"Hello, World!\n");
+    printString("Hello, World!\n");
 
     // Call cpp kernel_main (defined in kernel.cpp)
     return kernel_main();

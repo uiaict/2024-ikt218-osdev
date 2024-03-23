@@ -1,5 +1,5 @@
 extern _gdtp             ; _gdtp the special pointer is in another file
-extern idtp             ; idtp the special pointer to idt
+extern _idtp             ; idtp the special pointer to idt
 
 global _gdt_flush        ; Enables C code to link to this
 global idt_load         ; Enables C code to link to this
@@ -47,7 +47,7 @@ flush2:
     ret                 ; Return to C code
 
 idt_load:
-    lidt [idtp]         ; Load pointer
+    lidt [_idtp]         ; Load pointer
     ret                 ; Return to C code
 
 _start:
