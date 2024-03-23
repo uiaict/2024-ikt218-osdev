@@ -1,6 +1,11 @@
-extern main
+extern _gdtp             ; _gdtp the special pointer is in another file
+extern idtp             ; idtp the special pointer to idt
+
+global _gdt_flush        ; Enables C code to link to this
+global idt_load         ; Enables C code to link to this
 
 global _start
+extern main
 
 section .multiboot_header
 header_start:
@@ -29,8 +34,24 @@ header_end:
 section .text
 bits 32
 
+_gdt_flush:
+    lgdt [_gdtp]        ; Load the GDT with our 'gp'
+    mov ax, 0x10        ; Data segment selector
+    mov ds, ax
+    mov es, ax
+    mov fs, ax
+    mov gs, ax
+    mov ss, ax
+    jmp 0x08:flush2     ; Far jump to refresh code segment selector
+flush2:
+    ret                 ; Return to C code
+
+idt_load:
+    lidt [idtp]         ; Load pointer
+    ret                 ; Return to C code
+
 _start:
-    cli
+    cli                 ; Disabling interrupts
 
     mov esp, stack_top
 
