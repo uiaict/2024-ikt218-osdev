@@ -3,7 +3,7 @@
 #include "libc/stdbool.h"
 #include <multiboot2.h>
 
-#include "stdlib/stdtxt.h"
+#include "stdtxt.h"
 #include "gdt.h"
 #include "idt.h"
 
