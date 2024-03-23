@@ -1,29 +1,35 @@
 #include "gdt.h"
 
-struct gdt_entry gdt[3];
+#define GDT_ENTRIES 3
 
-struct gdt_ptr gdtp;
+struct gdt_entry gdt[GDT_ENTRIES];
+struct gdt_ptr _gdtp;
 
-void gdt_set_gate(uint8_t index, uint32_t base, uint32_t limit, uint8_t access, uint8_t gran)
+// Passing the address of the _gdtp pointer to lgdt with inline assembly.
+void gdt_load(struct gdt_ptr *_gdtp) {
+    asm volatile("lgdt %0" : : "m" (*_gdtp));
+}
+
+void gdt_set_gate(int32_t index, uint32_t base, uint32_t limit, uint8_t access, uint8_t gran)
 {
     // Base addresses in the descriptor, length 32 bits
-    gdt[index].base_low = (base & 0xFFFF);                  // Lower 16 bits, AND'ing bitmask to preserve 16 bits.
-    gdt[index].base_middle = (base >> 16) & 0x00FF;         // Middle 8 bits, AND'ing bitmask to preserve 8 bits, shifted right 16 spaces
-    gdt[index].base_high = (base >> 24) & 0x00FF;           // High 8 bits, AND'ing bitmask to preserve 8 bits, shifted right 24 spaces
+    gdt[index].base_low = base & 0xFFFF;                    // Lower 16 bits, AND'ing bitmask to preserve 16 bits.
+    gdt[index].base_middle = (base >> 16) & 0xFF;           // Middle 8 bits, AND'ing bitmask to preserve 8 bits, shifted right 16 spaces
+    gdt[index].base_high = (base >> 24) & 0xFF;             // High 8 bits, AND'ing bitmask to preserve 8 bits, shifted right 24 spaces
     
     // Limits of the descriptor
-    gdt[index].limit_low = (limit & 0xFFFF);                // Lower limit 16 bits
-    gdt[index].granularity = ((limit >> 16) & 0x000F);      // High 4 bits of the limit, shifted right 16 spaces
+    gdt[index].limit_low = limit & 0xFFFF;                  // Lower limit 16 bits
+    gdt[index].granularity = (limit >> 16) & 0x0F;          // High 4 bits of the limit, shifted right 16 spaces
     
     // Granularity and access flags in the descriptor
-    gdt[index].granularity |= (gran & 0xF0);                // Granularity 4 bits (upper nibble), OR'ed with gran
+    gdt[index].granularity |= gran & 0xF0;                  // Granularity 4 bits (upper nibble), OR'ed with gran
     gdt[index].access = access;                             // Access flags 8 bits
 }
 
-void gdt_install()
+void gdt_init()
 {
-    gdtp.limit = (sizeof(struct gdt_entry) * 3) - 1; // Limit of GDT, ie. the size in memory of the GDT
-    gdtp.base = (uint32_t)&gdt; // Pointer to start of GDT in memory
+    _gdtp.limit = sizeof(struct gdt_entry) * GDT_ENTRIES - 1; // Limit of GDT, ie. the size in memory of the GDT
+    _gdtp.base = (uint32_t) &gdt; // Pointer to start of GDT in memory
     
     gdt_set_gate(0, 0, 0, 0, 0); // NULL descriptor, index 0
 
@@ -54,6 +60,9 @@ void gdt_install()
     // Otherwise the same as code segment
     gdt_set_gate(2, 0, 0xFFFFFFFF, 0b10010010, 0b11001111); 
 
+    // Load pointer
+    gdt_load(&_gdtp);
+
     // Flush old GDT and install new changes
-    gdt_flush();
+    _gdt_flush();
 }

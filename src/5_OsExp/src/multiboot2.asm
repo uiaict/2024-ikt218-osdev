@@ -1,7 +1,7 @@
-extern gdtp             ; gdtp the special pointer is in another file
+extern _gdtp             ; _gdtp the special pointer is in another file
 extern idtp             ; idtp the special pointer to idt
 
-global gdt_flush        ; Enables C code to link to this
+global _gdt_flush        ; Enables C code to link to this
 global idt_load         ; Enables C code to link to this
 
 global _start
@@ -34,8 +34,8 @@ header_end:
 section .text
 bits 32
 
-gdt_flush:
-    lgdt [gdtp]         ; Load the GDT with our 'gp'
+_gdt_flush:
+    lgdt [_gdtp]        ; Load the GDT with our 'gp'
     mov ax, 0x10        ; Data segment selector
     mov ds, ax
     mov es, ax
@@ -47,11 +47,11 @@ flush2:
     ret                 ; Return to C code
 
 idt_load:
-    lidt [idtp]        ; Load pointer
+    lidt [idtp]         ; Load pointer
     ret                 ; Return to C code
 
 _start:
-    cli
+    cli                 ; Disabling interrupts
 
     mov esp, stack_top
 

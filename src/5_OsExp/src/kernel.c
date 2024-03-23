@@ -13,11 +13,10 @@ struct multiboot_info {
     struct multiboot_tag *first;
 };
 
-
 int kernel_main();
 
 int main(uint32_t magic, struct multiboot_info* mb_info_addr) {
-    gdt_install();
+    gdt_init();
     idt_install();
     initScreen(); // Clear screen and initialize memory buffer for text.
 

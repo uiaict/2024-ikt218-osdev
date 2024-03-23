@@ -3,13 +3,13 @@
 
 #include "stdint.h"
 
-extern void gdt_flush();
+extern void _gdt_flush();
 
 // Entrypoint for GDT
 struct gdt_entry
 {
-    uint32_t limit_low;
-    uint32_t base_low;
+    uint16_t limit_low;
+    uint16_t base_low;
     uint8_t base_middle;
     uint8_t access;
     uint8_t granularity;
@@ -19,15 +19,17 @@ struct gdt_entry
 // Special pointer to GDT
 struct gdt_ptr
 {
-    uint32_t limit;
+    uint16_t limit;
     uint32_t base;
 } __attribute__((packed));
 
-
 // GDT Descriptor
-void gdt_set_gate(uint8_t index, uint32_t base, uint32_t limit, uint8_t access, uint8_t gran);
+void gdt_set_gate(int32_t index, uint32_t base, uint32_t limit, uint8_t access, uint8_t gran);
 
-// Install special pointer and GDT entries, as well as tell CPU where GDT is with gdt_flush
-void gdt_install();
+// Trying to load gdt in C instead of assembly, might be required due to circumstances I am not aware of-
+void gdt_load(struct gdt_ptr *_gdtp);
+
+// Install special pointer and GDT entries, as well as tell CPU where GDT is with _gdt_flush
+void gdt_init();
 
 #endif
