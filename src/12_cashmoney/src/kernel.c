@@ -3,7 +3,7 @@
 #include <libc/stdbool.h>
 #include <multiboot2.h>
 #include <libc/stdio.h>
-#include "gdt/descriptor_tables.h"
+#include "descriptor_tables/descriptor_tables.h"
 
 struct multiboot_info
 {

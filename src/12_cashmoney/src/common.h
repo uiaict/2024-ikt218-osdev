@@ -41,3 +41,17 @@ static inline int8_t abs8(int8_t value)
 {
     return (value < 0 ? -value : value);
 }
+
+// Length is in bytes
+static inline void *memset(void *dst, int value, int len)
+{
+    uint8_t *ptr = dst;
+
+    while(len > 0)
+    {
+        *(ptr++) = value;
+        len--;
+    }
+
+    return dst;
+}

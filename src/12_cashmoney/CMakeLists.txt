@@ -63,8 +63,9 @@ add_executable(uiaos-kernel
 	src/multiboot2.asm # TODO: Add multiboot2 support
     src/kernel.c
 	src/kernel.cpp
-	src/gdt/descriptor_tables.c
-	src/gdt/gdt_flush.asm
+	src/descriptor_tables/descriptor_tables.c
+	src/descriptor_tables/gdt_flush.asm
+	src/descriptor_tables/idt_flush.asm
 )
 
 # Include directories for the kernel target
