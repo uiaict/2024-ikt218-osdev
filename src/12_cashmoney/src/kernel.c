@@ -1,9 +1,9 @@
-#include "libc/stdint.h"
-#include "libc/stddef.h"
-#include "libc/stdbool.h"
+#include <libc/stdint.h>
+#include <libc/stddef.h>
+#include <libc/stdbool.h>
 #include <multiboot2.h>
-#include "descriptor_tables.h"
-#include "monitor.h"
+#include <libc/stdio.h>
+#include "gdt/descriptor_tables.h"
 
 struct multiboot_info
 {

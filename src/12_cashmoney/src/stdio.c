@@ -1,5 +1,5 @@
 #include <libc/stdbool.h>
-#include "monitor.h"
+#include <libc/stdio.h>
 #include "common.h"
 
 #define VIDEO_MEMORY_ADDRESS 0xB8000

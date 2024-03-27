@@ -1,4 +1,4 @@
-#include "common.h"
+#include <libc/string.h>
 
 size_t string_length(const char *c_str)
 {
